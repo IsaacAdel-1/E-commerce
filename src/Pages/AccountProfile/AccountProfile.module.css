@@ -1,0 +1,190 @@
+body{
+    overflow-x: hidden;
+}
+nav{
+    /* height: 40px; */
+ 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding-left: 20px;
+}
+.Account_container{
+    background-color: #f9fafb;
+    /* min-height: 100vh; */
+    padding: 40px 20px;
+    display: flex;
+    gap: 20px;
+    
+}
+.account_card{
+    width: 30%;
+    border-radius: 10px;
+    
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 0px 1px rgba(0, 0, 0, 0.1);
+
+}
+.account_data{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    margin: auto;
+}
+.dataText{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.personImage{
+    
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    
+    background-color: #e0e7ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+.cameraImage{
+    position: absolute;
+    right: -5%;
+    top: 65%;
+}
+.cameraImageSVG{
+   
+    background-color: #fff;
+    
+    padding: 5px;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    stroke : #4059d6;
+}
+.cameraImageSVG:hover{
+    background-color: #4059d6;
+    stroke: #fff;
+   transform: scale(1.05);
+}
+
+.userName{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+.Email{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.verified{
+    color: #166556;
+    background-color: #dcfce7;
+    padding: 2px 15px;
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    line-height: 20px;
+}
+.FaCheckCircle{
+    font-size: .75rem;
+    line-height: 20px;
+}
+.Line{
+    width: 100%;
+    height: .5px;
+    background-color: rgba(0, 0, 0, .1);
+    margin: 20px 0;
+}
+.dashboard_menu{
+    list-style: none;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+   
+    
+}
+.dashboard_menu .sidebarMenu{
+    font-size: 1.5rem;
+    cursor: pointer;
+    /* background-color: #fff; */
+    
+    color: #000;
+  
+    padding: 10px;
+
+    border-radius: 15px;
+    display: flex;
+    text-decoration: none;
+   
+}
+.dashboard_menu li:hover{
+    background-color: #f3f4f6;
+}
+.dashboard_menu .logoutItem:hover{
+    background-color: #fef2f2;
+}
+.dashboard_menu .active {
+    background-color: #4059d6 ; 
+    color: #fff;
+    
+}
+.menuIcon{
+    margin-right: 10px;
+}
+.main_content{
+  
+    width: 70%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    
+    box-shadow: 0 0px 1px rgba(0, 0, 0, 0.1);
+    
+}
+.notification{
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: #fff;
+  
+    padding: 10px;
+    border-radius: 15px;
+    display: flex;
+    text-decoration: none;
+}
+.userImage{
+    object-fit: cover;
+    width: 110px;
+    height: 110px;
+    border-radius:50% ;
+}
+
+@media (max-width: 720px) {
+    .Account_container{
+        flex-direction: column;
+        gap: 20px;
+        }
+    .account_card{
+        width: 90%;
+        margin: auto;
+    }
+    .main_content{
+        width: 90%;
+        margin: auto;
+    }
+    .dashboard_menu{
+        text-align: center;
+        
+    }
+}

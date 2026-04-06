@@ -1,0 +1,72 @@
+
+.continueWith{
+    /* background-color: rgb(211, 238, 211); */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 40%; */
+}
+.continueWith p{
+   
+    background-color: rgb(255, 255, 255);
+    width: 40%;
+    text-align: center;
+
+}
+.LoginForm{
+    width: 380px;
+    margin: auto;
+    background-color: #ecf4ff;
+    padding: 30px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.continueWith::after , .continueWith::before{
+    content: "";
+    position: absolute;
+    width: 30%;
+    height: 1px;
+    background-color: #ccc;
+    top: 35%;
+}
+.continueWith::after{
+    right: 0;
+}
+.continueWith::before{
+    left: 0;
+}
+.way{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px 20px;
+    border: #dad9d9 1px solid;
+    width: 50%;
+    transition: all .3s ease;
+}
+.way:hover{
+    background-color: #fff;
+}
+/* .waysToLogin{
+   
+} */
+.formField {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 30px 0;
+}
+.formField input{
+    border-radius: 5px;
+    padding: 4px 2px;
+    border:  2px solid #2875e9;
+   
+}
+.LoginFormContainer{
+    background-color: #ecf4ff;
+    height: 100vh;
+    padding-top: 50px;
+}

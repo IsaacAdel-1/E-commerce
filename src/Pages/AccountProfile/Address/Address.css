@@ -1,0 +1,87 @@
+.AddressFormContainer{
+    background-color: rgb(237, 245, 255 , .9);
+    padding-top: 30px;
+    min-height: 100vh;
+    font-family: 'Lucida Sans'   ;
+    /* position: absolute; */
+
+    /* background-color: #2563ee; */
+    width: 100%;
+    padding-bottom: 20px ;
+    
+}
+.address-card{
+    width: 35%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+.address-card h2{
+    text-align: center;
+    font-weight: 600;
+}
+.address-card h4{
+    font-size: 1.1rem;
+    color: #2563ee;
+    text-align: center;
+}
+.form-grid{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+}
+.form-group input {
+    border: #bfdbfe 1.6px solid;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 2px;
+}
+.form-group input:focus{
+    border: #388bf1 2px solid;
+    outline: none;
+}
+.fullName , .phoneNumber{
+    width: 45%;
+}
+.form-group #notes{
+    
+    padding: 20px;
+}
+
+
+/* Address Container */
+
+.AddressContainer{
+    display: flex;
+    flex-direction: column;
+ 
+}
+
+.AddressContainer header{
+    display: flex;
+    justify-content: space-between;
+
+}
+.AddressContainer header button{
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #4F46E5;
+    border: none;
+    color: #fff;
+}
+@media (max-width: 748px) {
+    .address-card{
+        width: 70%;
+    }
+    .AddressFormContainer{
+        bottom: -100vh;
+    }
+}

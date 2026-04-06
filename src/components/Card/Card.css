@@ -1,0 +1,126 @@
+/*
+    الكود ده للعنصر اللي بيحتوي على كل الكاردات
+    علشان يترتبوا جنب بعض بشكل متناسق
+*/
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* الخصائص اللي الكارد نفسه بياخدها
+    (زي الأبعاد، الـ Shadow، و الـ Flexbox)
+*/
+.card.product-card-container { 
+    height: 390px;
+  }
+  
+.product-card-container {
+    width: 17rem;
+    
+    display: flex;
+    flex-direction: column; /* ده اللي بيخلي المحتوى فوق بعض */
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden; /* مهم عشان العناصر اللي بتطلع برا */
+    position: relative; /* مهم عشان نثبت العناصر الداخلية اللي بـ position: absolute; */
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box; 
+}
+
+/* تنسيق صورة المنتج
+    مهم تحديد الـ height و الـ object-fit عشان الصور كلها تبقى بنفس الحجم
+*/
+.product-image {
+    background-color: #f7f7f7;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    /* flex: 0 0 55%;    */
+    display: block;
+}
+.img_container{
+    height: 55%;
+}
+/*
+    تنسيق قسم المحتوى النصي
+    (الاسم، التقييم، السعر، الزر)
+*/
+.featuredCardTitle{
+    text-decoration: none;
+    font-size: 20px;
+    color: #3b33dc;
+}
+.product-details-section {
+    padding: 20px;
+   
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    gap: 40px;
+    box-sizing: border-box;
+}
+
+
+.add-to-cart-button {
+    background-color: #4f46e5;
+    border-radius: 7px;
+    padding: 10px 15px;
+    color: #fff;
+    border: none;
+    position: absolute; /* ده بيثبته في مكانه بالنسبة للـ card */
+    bottom: 15px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+/* تنسيق صندوق الخصم
+    و تثبيته في مكانه باستخدام position: absolute;
+*/
+.discount-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #55c57a;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* تنسيق أيقونة القلب
+*/
+.heart-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+@media (max-width: 1183px) {
+    .product-card-container{
+        width: 15rem;
+    }
+    .container{
+        justify-content: center;
+        
+    }
+}
+

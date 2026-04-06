@@ -1,0 +1,144 @@
+
+.main-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 10px;
+
+}
+.logo .LogoLink {
+    font-size: 22px;
+    color: #3b33dc;
+    font-weight: 600;
+    letter-spacing: .5px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+.logo .LogoLink span{
+    color: #000;
+}
+.nav-links{
+    display: flex;
+    justify-content: center;
+   
+    align-items: center;
+    width: 40%;
+    padding: 10px;
+}
+.nav-links li {
+    margin-right: 40px;
+    list-style: none;
+    
+    
+}
+
+.nav-links li a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #3b33dc;
+    color: #000;
+}
+.nav-links li a:hover{
+    color: #6059ee;
+}
+.search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-right: 20px;
+    width: fit-content;
+    box-sizing: border-box;
+}
+.search input {
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    padding: 2px 51px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    flex-grow: 1;
+    outline: none;
+    padding-left: 20px;
+    position: relative;
+    
+}
+.search .searchIcon{
+    position: absolute;
+    
+    left: 2%;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 5px;
+}
+.searchAndCart{
+    display: flex;
+}
+.ShoppingCart{
+    
+    z-index: 0;
+    /* background-color: #3b33dc; */
+    height: 100%;
+    /* width: 50px; */
+    margin-right: 10px;
+    
+
+}
+.shoppingCart{
+    position: relative;
+}
+.shoppingCart .numberOfcarts{
+    background-color: #4f46e5;
+    color: #fff;
+    padding: 5px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 1%;
+    right: .5%;
+    z-index: 1;
+}
+.Register{
+    display: flex;
+    align-items: center;
+    
+}
+.Register .LogninButton{
+    background-color: #fff;
+    padding: 5px 10px;
+    border: none;
+    font-size: 1.2rem !important;
+    height: 100%;
+    line-height: 30px;
+    text-decoration: none;
+    margin-right: 10px;
+    color: #000;
+}
+.Register .signUPButton{
+    background-color: #4f46e5;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    font-size: 1.2rem !important;
+    height: 100%;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.userImage{
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius:50% ;
+    margin-left: 10px;
+    cursor: pointer;
+}
+@media (max-width: 1080px) {
+    .nav-links{
+        display: none;
+    }
+}

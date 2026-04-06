@@ -1,0 +1,95 @@
+.Footer{
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    background-color: hsl(221, 39%, 11%);
+    flex-wrap: wrap;
+    overflow-x: hidden;
+}
+
+.Footer div{
+    width: 15%;
+    padding: 10px;
+    text-align: start;
+
+}
+
+footer .ModernShop div {
+    
+    width: 80%;
+    color: #748299;
+}
+.website-links a:hover{
+    color : #fff;
+}
+.Footer div h3 {
+    font-size: 20px;
+    color: #fff;
+}
+.Footer div ul {
+    list-style: none;
+    text-align: start;
+    width: 100%;
+    padding-left: 0;
+    color: #748299;
+}
+
+.Footer div ul li {
+    margin-bottom: 10px;
+    text-align: start;
+    width: 100%;
+}
+.SocialMediaIcons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    
+}
+.SocialMediaIcons a{
+    color: #748299;
+    font-size: 1.3rem;
+}
+.SocialMediaIcons a:hover{
+    color: #fff;
+}
+.Newsletter p {
+    color: #748299;
+}
+.Newsletter .FooterEnterEmail input{
+    background-color: #1f2937;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    color: #748299;
+    
+}
+.Newsletter .FooterEnterEmail input:focus{
+    outline: #4338ca 2px solid;
+}
+.FooterEnterEmail button{
+    background-color: #4338ca;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 15px;
+}
+.QuickLinks ul li:hover , .CustomerService ul li:hover , .CustomerService ul a:hover{
+    color: #fff;
+    cursor: pointer;
+}
+
+@media (max-width:750px) {
+    footer{
+        font-size: 10px;
+    }
+    .Footer div h3{
+        font-size: 12px;
+    }
+}
+
+@media (max-width:500px) {
+    footer{
+        font-size: 7px;
+    }
+}

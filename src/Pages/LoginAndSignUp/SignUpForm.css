@@ -1,0 +1,134 @@
+.FormContainer{
+    background-color: #ecf4ff;
+    display: flex;
+    padding: 50px 0;
+}
+.websiteLogo{
+
+    text-align: center;
+    /* background-color: #000000; */
+}
+.websiteLogo img{
+   width: 70px;
+   height: 70px;
+   cursor: pointer;
+ 
+}
+
+.websiteLogo span{
+    color: #000000;
+}
+.signUpForm{
+    margin: auto;
+    background-color: #ecf4ff;
+    width: 30%;
+    padding: 5%;
+    box-shadow: 2px 4px 7px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    min-width: 350px;
+}
+
+.formText{
+    text-align: center;
+}
+.formText p {
+    color: #748299;
+}
+.formField{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: 500;
+    width: 100%;
+}
+.formData {
+    width: 100%;
+}
+.formField input , .formField select {
+    padding: 7px 10px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.formField input:focus {
+    outline: #589df9 2px solid;
+}
+.formField input::placeholder{
+    color: #8896ad;
+}
+.CofirmPassword{
+    margin-top: 20px;
+}
+.passwordStrength {
+    
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 5px; 
+    width: 100%; 
+   
+}
+
+.PasswordValue {
+    display: flex; 
+   
+    margin-top: 8px; 
+    padding: 0; 
+    align-items: center; 
+    justify-content: space-between;
+    width: 100%;
+}
+.passwordStrength .Strong{
+    background-color: #08dd16b3;
+    
+}
+.passwordStrength .Medium{
+    
+    background: linear-gradient(to right , #f4f143b3 80% ,#ddd 80%);
+}
+.passwordStrength .Weak{
+    
+    background: linear-gradient(to right , #ecac0db3 60% ,#ddd 60%);
+}
+.passwordStrength .Very{
+    background: linear-gradient(to right , #ec750db3 40% ,#ddd 40%);
+}
+.passwordStrength .Extremely{
+   
+    background: linear-gradient(to right , #ec0d0db3 20% ,#ddd 20%);
+}
+
+.PasswordValue p {
+    margin: 0; 
+    padding: 0; 
+    font-size: 0.9em; 
+    color: #333; 
+    line-height: 1.2; 
+}
+
+
+.passwordStrengthMeter {
+    width: 100%; 
+    height: 5px; 
+    border-radius: 4px; 
+    background-color: #ddd;
+    
+}
+.Submit{
+    margin-top: 50px;
+    width: 100%;
+    padding: 10px 0;
+    background: linear-gradient(to right , #589df9 30% , #4188f7 45%);
+    border: none;
+    transition: all 0.3s ease;
+}
+.Submit:hover{
+    transform: scale(1.008) ;
+
+}
+.haveAcc{
+    margin-top: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+}

@@ -1,0 +1,43 @@
+/* *{
+    padding: 0;
+    margin: 0;
+} */
+
+.join-our{
+    background-color: #eef2ff;
+    padding: 60px 0;
+    text-align: center;
+    
+}
+
+.JoinOurText p {
+    margin-bottom: 20px;
+}
+.EnterEmail{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.EnterEmail input{
+    padding: 15px 20px;
+    width: 25%;
+    /* border: none; */
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+/* .EnterEmail input:focus{
+    border: none;
+    outline: #4338ca 2px solid;
+} */
+.EnterEmail button{
+    padding: 10px 25px;
+    background-color: #2a67f5;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 20px;
+    border: none;
+    
+}
+.EnterEmail button:hover{
+    background-color: #4338ca;
+}

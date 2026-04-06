@@ -1,0 +1,53 @@
+.discoverContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f8f9fa;
+    height: 70vh;
+}
+.discoverContent {
+    width: 35%;
+   
+}
+.discoverContent h2{
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+.discoverContent .Explore {
+    font-size: 1.6rem;
+    margin-bottom: 50px;
+}
+.discoverButtons{
+    display: flex;
+    width: 320px;
+    /* background-color: aqua; */
+    justify-content: space-between;
+}
+.discoverButtons button{
+    padding: 17px 25px;
+    cursor: pointer;
+    border: none;
+     border-radius: 10px;
+}
+.discoverButtons .shopNowButton{
+    background-color: #2a67f5;
+    color: #fff;
+    font-weight: 600;
+    
+   
+}
+.discoverButtons .shopNowButton:hover{
+    background-color: #3a2cd7;
+}
+.discoverButtons button:last-child{
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+.discoverButtons button:last-child:hover{
+    background-color: #fdfcfc;
+    border: 1px solid #000;
+}
+.discoverImage img{
+    width: 300px;
+    height: 350px;
+}

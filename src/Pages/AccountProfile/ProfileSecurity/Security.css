@@ -1,0 +1,69 @@
+.securityContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 20px;
+}
+.line {width: 95%;}
+.securityContainer form{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+.securityContainer form input{
+    padding: 10px;
+    border-radius: 5px;
+    border: #ccc solid 1px;
+    margin-bottom: 20px;
+}
+
+.AuthenticationSection{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+.AuthenticationSection .SMS , .AuthenticationSection .Email-Methode{
+    background-color: #f9fafb;
+    padding: 12px 15px 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.Methode-checking{
+    background-color: #ccc;
+    width: 3%;
+    padding: 2px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+    min-width: 40px;
+    justify-content: start;
+}
+.Methode-checking-inner{
+    background-color: #fff;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    
+}
+.AuthenticationSection .SMS .active , .AuthenticationSection .Email-Methode .active{
+    background-color: #4f46e5;
+    justify-content: end;
+}
+.sessions{
+    background-color: #f9fafb;
+    padding: 10px ;
+}
+@media (max-width: 768px) {
+    .securityContainer form{
+        width: 100%;
+        
+    }
+    .securityContainer form button {
+        width: 100vw;
+    }
+}

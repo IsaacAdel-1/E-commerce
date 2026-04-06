@@ -1,0 +1,230 @@
+/* *{
+    margin: 0;
+    padding: 0;
+} */
+.dashboardContainer{
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+   
+}
+.dashboard-cards{
+    display: flex;
+    gap: 50px;
+    width: 100%;
+   
+    justify-content: space-between;
+}
+
+.dashboardCard{
+    width: 30%;
+    
+    padding: 10px 0px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #d9e7ff;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.CardData p:nth-child(2){
+    color: #fff;
+    font-size: 1.7rem;
+    margin: 0;
+}
+.totalOrders {
+    background: linear-gradient(to right, #6564f1 30%, #8e38eb 60%);
+    
+  }
+  
+.TotalSpent {
+    background: linear-gradient(to right, #21c45e 30%, #099c68 60%);
+    
+  }
+.RewardPoints {
+    background: linear-gradient(to right, #f5990c 30%, #eb5e0c 60%);
+    
+}
+.CardIcon{
+    font-size: 50px;
+}
+.RecentOrders{
+    width: 45%;
+   
+}
+.OrdersAndWishlist{
+    margin-top: 50px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+.RecentOrdersHeader{
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+.ordersList{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    padding:0 ;
+}
+.orderDetails p {
+    margin: 0;
+}
+.orderDetails{
+    display: flex;
+    width: 100%;
+    background-color: #f9fafb;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 80px;
+    cursor: pointer;
+}
+.orderDetails div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.orderDetails div .icon{
+    font-size: 1.4rem;
+   
+    padding: 10px;
+}
+.ViewOrders{
+    background-color: #fff;
+    border: none;
+    font-size: 1.1rem;
+    color: #5855eb;
+    font-weight: 500;
+
+}
+.orderDetails div .Delivered {
+    background-color: #DEF7E1; /* أخضر باستيل فاتح */
+}
+
+.orderDetails div .Shipped {
+    background-color: #E1F0FF; /* أزرق سماوي فاتح */
+}
+
+.orderDetails div .Pending {
+    background-color: #FFF8E1; /* أصفر خفيف جداً */
+}
+
+.orderDetails div .Cancelled {
+    background-color: #FFEBEE; /* أحمر وردي فاتح */
+}
+.orderDetails .status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    width: 15%;
+    padding: 0px 10px;
+    
+    border-radius: 20px;
+}
+.WishList{
+    width: 45%;
+}
+.icon img{
+    width: 60px;
+    height: 60px;
+    object-fit: inherit;
+    
+}
+.AddProduct{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid #4c84ff;
+    color: #4c84ff;
+    font-size: 24px;
+    font-weight: bold;
+
+
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+}
+.orderDetails .Details{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: flex-start;
+}
+.orderDetails .Details p{
+    height: fit-content;
+   font-size: 1.1rem;
+   font-weight: 500;
+    width: 100%;
+}
+.orderDetails .Details p:nth-child(2){
+    display: flex;
+    gap: 20px;
+}
+@media (max-width: 1000px) {
+    .dashboardContainer{
+        
+        padding: 0;
+    }
+    .dashboardContent{
+        display: flex;
+
+        justify-content: space-around;
+    }
+    .dashboard-cards{
+        flex-direction: column;
+        width: 30%;
+        
+    }
+    .OrdersAndWishlist{
+        flex-direction: column;
+        
+        padding: 0;
+        margin: 0;
+        align-items: end;
+    }
+  
+    .OrdersAndWishlist .RecentOrders{
+        width: 90%;
+        
+    }
+    .OrdersAndWishlist .WishList{
+        width: 90%;
+    }
+    
+    .dashboardCard{
+        padding: 5px 10px;
+        width: 100%;
+    }
+}
+@media (max-width : 900px){
+    .dashboardCard{
+        width: 60vw;
+        max-width: 320px;
+    }
+    .dashboardContainer{
+        padding: 10px;
+    }
+    .dashboardContent{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 30px;
+    }
+    .dashboard-cards{
+        flex-direction: column;
+        gap: 25px;
+        width: 100vw;
+    }
+    .OrdersAndWishlist{
+        flex-direction: column;
+    }
+    .RecentOrders , .WishList{
+        width: 100%;
+    }
+}
