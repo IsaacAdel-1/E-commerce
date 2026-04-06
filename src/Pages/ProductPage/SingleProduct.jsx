@@ -4,7 +4,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import "./SingleProduct.css";
 import { useParams } from "react-router-dom";
 import RecommendedProducts from "../HomePage/RecommendedProducts";
-// import { FaLeaf } from "react-icons/fa";
+
 
 
 const SingleProduct = () => {
@@ -54,15 +54,7 @@ const SingleProduct = () => {
 
     }, [id])
 
-    // Recommended Products
-    //  useEffect(() => {
-    //      if (!product.category) return;
-    //     console.log("Category:", product.category);
-
-    //     fetch(`https://dummyjson.com/products/category/${product.category}`)
-    //         .then(res => res.json())
-    //         .then(res => {console.log(res); setProducts(res.products)});
-    // }, [product.category])
+ 
     return (
         <>
             <div className="singleProductPage">

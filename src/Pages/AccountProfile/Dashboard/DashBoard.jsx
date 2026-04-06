@@ -1,4 +1,4 @@
-import { MdOutlineShoppingBag , MdOutlineLocationOn, MdOutlineAccountBalanceWallet ,MdOutlinePerson} from "react-icons/md";
+import { MdOutlineShoppingBag , MdOutlineAccountBalanceWallet } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
 import './DashBoard.css'
 import { useContext, useState } from "react";

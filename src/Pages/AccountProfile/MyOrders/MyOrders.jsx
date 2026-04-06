@@ -2,11 +2,12 @@ import { useContext, useEffect, useState } from 'react';
 import './MyOrders.css'
 import { useRef } from 'react';
 import CartContext from '../../../context/CartContext';
+import {addProductToCart} from '../../../Services/constants'
 const MyOrders = () => {
 
     useEffect(() => {
         try {
-            fetch('http://localhost/ModernShopWebsite/addProductToCart.php',
+            fetch(addProductToCart,
                 {
                     method: "GET",
 

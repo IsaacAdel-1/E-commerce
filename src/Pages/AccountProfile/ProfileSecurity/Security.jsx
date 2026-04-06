@@ -43,6 +43,7 @@ const Security = () => {
         
     }
     useEffect(()=>{
+        // have to modifie 
         const response = fetch('http://localhost/ModernShopWebsite/GetDevicesData.php');
         response.then(data => data.json()).then(data => {console.log(data); setDeviceData(data)});
         

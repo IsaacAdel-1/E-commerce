@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
-// خلي Home عادي (عشان أول صفحة تفتح بسرعة)
 
 import Home from "./Pages/HomePage/Home";
 import DashBoard from "./Pages/AccountProfile/Dashboard/DashBoard";
@@ -13,7 +12,7 @@ import ProfileSettings from "./Pages/AccountProfile/ProfileSettings/ProfileSetti
 import Security from "./Pages/AccountProfile/ProfileSecurity/Security";
 import ContactUs from "./Pages/ContactUs/ContactUs";
 
-// خلي باقي الصفحات Lazy
+
 const Shop = lazy(() => import("./Pages/ShopPage/Shop"));
 const SingleProduct = lazy(() => import("./Pages/ProductPage/SingleProduct"));
 const LoginPage = lazy(() => import("./Pages/LoginAndSignUp/LoginPage"));

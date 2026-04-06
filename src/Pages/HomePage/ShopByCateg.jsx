@@ -1,8 +1,6 @@
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import Button from "react-bootstrap/Button";
-// import Card from "react-bootstrap/Card";
+
 import "./ShopByCateg.css";
-// import { FiChevronLeft } from "react-icons/fi";
+
 import {
   Sparkles, Flower, Sofa, ShoppingCart, Home, Utensils, Laptop,
   Shirt, Footprints, Watch, Smartphone, Bike, Scissors,
@@ -36,9 +34,9 @@ const ShopByCateg = () => {
     'tops': <User />,
     'vehicle': <Car />,
     'womens-bags': <ShoppingBag />,
-    'womens-dresses': <ShoppingBag />, // غيرنا دي عشان متهنجش
+    'womens-dresses': <ShoppingBag />, 
     'womens-jewellery': <Gem />,
-    'womens-shoes': <Footprints />,   // ودي كمان
+    'womens-shoes': <Footprints />,  
     'womens-watches': <Watch />,
   };
   useEffect(() => {
@@ -66,20 +64,20 @@ const ShopByCateg = () => {
               <Link key={card.slug} className="CardLinkTag no-underline ">
                 <div className="group relative flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:border-blue-600 w-[17rem]">
 
-                  {/* Header Section (Icon) */}
+                  
                   <div className="flex items-center gap-4 mb-4">
                     <div className="flex w-16 h-16 items-center justify-center rounded-lg bg-blue-50 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white">
                       <span className="h-6 w-[18rem] flex items-center justify-center ">
-                        {/* استدعاء الأيقونة مع تمرير حجم 32 أو 36 حسب رغبتك */}
+                        
                           {React.cloneElement(categoryIcons[card.slug] || <Sparkles />, { 
                             size: 75, 
-                            strokeWidth: 1.5 // الخط بيبقى أرق وأشيك لما نكبر الأيقونة
+                            strokeWidth: 1.5 
                           })}
                       </span>
                     </div>
                   </div>
 
-                  {/* Text Content */}
+                 
                   <div className="space-y-1">
                     <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
                       {card.name}

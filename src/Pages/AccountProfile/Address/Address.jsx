@@ -1,9 +1,8 @@
 
 import './Address.css';
 import { useEffect, useState } from 'react';
+import {Set_Address , Get_Address} from '../../../Services/constants'
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 export const AddressForm = ({display , close}) => {
     
@@ -34,7 +33,7 @@ export const AddressForm = ({display , close}) => {
     const handleSubmit = async (e)=>{
         try{
             e.preventDefault();
-        const response = await fetch("http://localhost/ModernShopWebsite/Set_Address.php" ,
+        const response = await fetch(Set_Address ,
           {  method : 'POST',
             headers : {
                 'Content-Type' : 'application/json'
@@ -139,7 +138,7 @@ const Address = () => {
     const[error , setError] = useState("");
     const fetchAddresses = async () => {
         try{
-            const response = await fetch("http://localhost/ModernShopWebsite/Get_Address.php" ,
+            const response = await fetch(Get_Address ,
             {   method : 'GET',
                 headers : {
                 'Content-Type' : 'application/json'

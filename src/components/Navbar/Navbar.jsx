@@ -1,5 +1,4 @@
-const url =
-    "https://www.canva.com/ai/code/thread/71507b40-d862-4984-bdac-9eea6e186924";
+
 import "./Navbar.css";
 import { FaSearch } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
@@ -9,11 +8,11 @@ import { UserContext } from "../../context/UserContext";
 import CartContext from "../../context/CartContext";
 import { HashLink } from "react-router-hash-link";
 import useProductSearch from "../../Hooks/useProductSearch";
-
+import {IMAGES_URL} from '../../Services/constants'
 const Navbar = ({ query }) => {
     const navigate = useNavigate();
-    const {user, setUser , login ,error , loading} = useContext(UserContext)
-    const IMAGE_PATH = "http://localhost/ModernShopWebsite/Uploads/";
+    const {user} = useContext(UserContext)
+   
     const [search, setSearch] = useState("");
     const {state} = useContext(CartContext); 
 
@@ -74,7 +73,7 @@ const Navbar = ({ query }) => {
                     <div className="Register">
                         { user.name ? <Link  to ={'/profile'} className="fs-5 text-decoration-none text-dark">{user.name}</Link> :
                         <Link to={'/login'} className="LogninButton">Log In</Link>}
-                        {user.name ? <img src={`${IMAGE_PATH}${user.image}`} alt="" className="userImage" onClick={()=>{navigate('/profile')}} /> :
+                        {user.name ? <img src={`${IMAGES_URL}${user.image}`} alt="" className="userImage" onClick={()=>{navigate('/profile')}} /> :
                         <Link className="signUPButton" to={'/signup'}>Sign Up</Link>}
                         {user.name ? "" :""}
                     </div>

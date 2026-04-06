@@ -69,22 +69,7 @@ const decreaseQuantity = (state , id)=>{
   );
 
   }
-// const decreaseQuantity = (state , id)=>{
 
-//     const item =state.find(p => p.id === id );
-//     if(!item) return state ;
-
-//     if((item.count??0) === 1){
-//       return removeFromCart(state , id)
-//     }
-
-
-//     return state.map(p =>
-//     p.id === id ? { ...p, count: (p.count ?? 0) - 1 } : p
-//   );
-//   }
-  
-   
 
 
 

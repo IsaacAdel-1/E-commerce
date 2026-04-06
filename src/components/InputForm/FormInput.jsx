@@ -1,8 +1,6 @@
 
-// import './SignUpForm.css'
-import React, { useState, useEffect, useRef } from 'react'
-import { evaluatePasswordStrength } from '../../Utilities/evaluatePasswordStrength'
-const Form_Design = "https://www.canva.com/ai/code/thread/6e4e633b-a893-4490-a954-318c528a969d";
+
+
 
 const FormInput = ({ label, type, name, value, onChange, placeholder, required, ExtraClasses , Options }) => {
 

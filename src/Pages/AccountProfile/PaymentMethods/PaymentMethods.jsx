@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./PaymentMethods.css";
-
+import {Set_CreditCard} from '../../../Services/constants';
 const PaymentMethods = () => {
     const [cards, setCards] = useState(false);
     const [error , setError] = useState("");
@@ -72,7 +72,7 @@ const PaymentMethods = () => {
 
          try{
             
-            const response = await fetch("http://localhost/ModernShopWebsite/Set_CreditCard.php",
+            const response = await fetch(Set_CreditCard,
                 {
                     method : 'POST',
                     headers : {

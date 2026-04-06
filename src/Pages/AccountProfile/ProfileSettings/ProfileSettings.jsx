@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./ProfileSettings.css";
+import {UpdateUserData} from '../../../Services/constants'
 const url = "https://www.canva.com/ai/code/thread/71507b40-d862-4984-bdac-9eea6e186924";
 
 const ProfileSettings = () => {
@@ -63,7 +64,7 @@ const ProfileSettings = () => {
                 localStorage.setItem("userData", JSON.stringify(updatedData));
                 
                 const response = await fetch(
-                    "http://localhost/ModernShopWebsite/UpdateUserData.php",
+                    UpdateUserData,
                     {
                         method: "PUT",
                         headers: {

@@ -1,14 +1,14 @@
 
-// import './Try.css'
-// import { Card } from 'react-bootstrap';
+
 import StarRatings from 'react-star-ratings';
 import { Link } from 'react-router-dom';
 import './Card.css';
 import { useContext, useState } from 'react';
 import CartContext from '../../context/CartContext';
+import {addProduct_ToCart} from '../../Services/constants'
 const CARD = ({ products }) => {
-    const [cartProducts, setCartProducts] = useState([]);
-    const { state, Add } = useContext(CartContext);
+    
+    const { Add } = useContext(CartContext);
 
     const addProductToCart = (clickedProduct) => {
         try {
@@ -22,7 +22,7 @@ const CARD = ({ products }) => {
                 rate: clickedProduct.rating
             }
 
-            fetch('http://localhost/ModernShopWebsite/addProductToCart.php', {
+            fetch(addProduct_ToCart , {
                 method: 'POST',
                 body: JSON.stringify(newProduct),
                 headers: {

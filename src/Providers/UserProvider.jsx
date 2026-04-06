@@ -1,9 +1,10 @@
 
-// UserProvider.jsx
-import { useState, useCallback, useEffect } from "react";
-// import { UserContext } from "../context/UserContext";
+
+import { useState, useCallback } from "react";
+import {UpdateUserData , LOGIN_URL} from '../Services/constants';
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
+
 const UserProvider = ({ children }) => {
   const navigator = useNavigate()
   const emptyUser = {
@@ -29,20 +30,9 @@ const UserProvider = ({ children }) => {
   const [loading , setLoading] = useState(false)
   const [error , setError] = useState(null)
 
-  const API_BASE = "http://localhost/ModernShopWebsite";
+ 
   const isAuthenticated = !!user?.email ;
-  //  !! convert into boolean value true or false
-  //   useEffect(() => {
-  //   const saved = localStorage.getItem("user");
-  //   if (saved) {
-  //     try {
-  //       setUser(JSON.parse(saved.userData));
-  //     } catch {
-  //       // localStorage.removeItem("user");
-  //       console.log("user has deleted successfully")
-  //     }
-  //   }
-  // }, []);
+  
 
   const updateData = async (userData)=>{
    const updatedUser = { ...(user || {}), ...userData };
@@ -54,7 +44,7 @@ const UserProvider = ({ children }) => {
     setError(null)
     setLoading(true)
 
-    const response = await fetch(`${API_BASE}/UpdateUserData.php`,{
+    const response = await fetch(UpdateUserData,{
       method : 'POST',
       headers : {
         'Content-Type' : 'application/json'
@@ -78,7 +68,7 @@ const UserProvider = ({ children }) => {
         try{
             setError(null);
             setLoading(true);
-            const response = await fetch(`${API_BASE}/LoginRequest.php`, {
+            const response = await fetch(LOGIN_URL, {
                 method : 'POST',
                 headers :{
                     'Content-Type': 'application/json',
@@ -131,18 +121,7 @@ const UserProvider = ({ children }) => {
   }
   }
   return (
-    <UserContext.Provider
-      value={{
-        user,
-        setUser,
-        login,
-        logout,
-        updateData,
-        loading,
-        error,
-        isAuthenticated,
-      }}
-    >
+    <UserContext.Provider value={{user, setUser, login, logout, updateData, loading, error, isAuthenticated }}>
       {children}
     </UserContext.Provider>
   );

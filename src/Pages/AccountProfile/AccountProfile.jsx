@@ -1,13 +1,14 @@
 import style from "./AccountProfile.module.css";
 
-// import MainContent from "./main-content/MainContent";
-import { FaCheckCircle , FaChartBar  , FaRegHeart , FaRegCompass, FaSignOutAlt  } from "react-icons/fa";
+
+import { FaCheckCircle , FaChartBar  , FaRegHeart , FaSignOutAlt  } from "react-icons/fa";
 import { MdOutlineShoppingBag , MdOutlineLocationOn, MdOutlineAccountBalanceWallet ,MdOutlinePerson} from "react-icons/md";
 import { BiShieldAlt2 , BiBell  } from "react-icons/bi";
 import { useContext, useState } from "react";
 
 import { NavLink , Outlet} from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
+import {IMAGES_URL} from '../../Services/constants';
 const url = "https://www.canva.com/ai/code/thread/71507b40-d862-4984-bdac-9eea6e186924";
 
 const AccountProfile = () => {
@@ -23,8 +24,8 @@ const AccountProfile = () => {
                     <circle cx="12" cy="13" r="4"></circle>
                 </svg>
   
-  const { user , setUser , logout , updateData}=useContext(UserContext)
-  const IMAGE_PATH = "http://localhost/ModernShopWebsite/Uploads/";
+  const { user  , logout }=useContext(UserContext)
+
   const handleItemClick = (e)=>{
     setActiveItem(e);
   }
@@ -42,7 +43,7 @@ const AccountProfile = () => {
           <div className={style.account_data}>
             <div className={style.personImage}>
               {user.image ? (
-                <img src={`${IMAGE_PATH}${user.image}`} alt=""  className={style.userImage}/>
+                <img src={`${IMAGES_URL}${user.image}`} alt=""  className={style.userImage}/>
               ) : (
                 // SVG Person Start
                person

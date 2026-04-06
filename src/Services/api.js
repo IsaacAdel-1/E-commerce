@@ -1,4 +1,5 @@
 
+export const API_BASE_URL = ""
 
 const getDataFromAPI = async (url , endPoint ="")=>{
 try{
