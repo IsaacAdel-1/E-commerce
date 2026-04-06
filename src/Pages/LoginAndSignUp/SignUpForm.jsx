@@ -92,7 +92,7 @@ const handleLabelClick = () => {
                 <form method='post' className="signUpForm" onSubmit={handleSubmit} encType='multipart/form-data'>
                 {/* Form Header */}
                     <div className="websiteLogo">
-                        <img src="../images/logo.png" alt="" />
+                        <img src="/logo.png" alt="Logo" />
                     </div>
                     <div className="formText">
                         <h2>Create an Account</h2>
