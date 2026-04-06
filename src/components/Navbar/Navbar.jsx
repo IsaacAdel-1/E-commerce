@@ -5,7 +5,7 @@ import { FaSearch } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import { UserContext } from "../../context/userContext";
+import { UserContext } from "../../context/UserContext";
 import CartContext from "../../context/CartContext";
 import { HashLink } from "react-router-hash-link";
 import useProductSearch from "../../Hooks/useProductSearch";

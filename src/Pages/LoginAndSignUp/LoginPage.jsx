@@ -4,7 +4,7 @@ import { FaFacebook } from "react-icons/fa";
 import "./LoginPage.css";
 import {UAParser} from "ua-parser-js" ;
 import Bowser from "bowser";
-import { UserContext } from "../../context/userContext";
+import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 const LoginPage = () => {
   const[UserData , setUserData]=useState({

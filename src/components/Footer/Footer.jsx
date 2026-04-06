@@ -3,7 +3,7 @@ import './Footer.css';
 import { Link } from 'react-router-dom';
 import { HashLink } from "react-router-hash-link";
 import { useContext } from 'react';
-import { UserContext } from '../../context/userContext';
+import { UserContext } from '../../context/UserContext';
 
 const Footer = () => {
     const Scroll=()=>{

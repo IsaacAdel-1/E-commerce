@@ -2,7 +2,7 @@ import { MdOutlineShoppingBag , MdOutlineLocationOn, MdOutlineAccountBalanceWall
 import { FaRegStar } from "react-icons/fa";
 import './DashBoard.css'
 import { useContext, useState } from "react";
-import { UserContext } from "../../../context/userContext";
+import { UserContext } from "../../../context/UserContext";
 const DashBoard =()=>{
     const [OrdersEnd , setOrdersEnd] = useState(2);
 

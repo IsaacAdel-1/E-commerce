@@ -7,7 +7,7 @@ import { BiShieldAlt2 , BiBell  } from "react-icons/bi";
 import { useContext, useState } from "react";
 
 import { NavLink , Outlet} from "react-router-dom";
-import { UserContext } from "../../context/userContext";
+import { UserContext } from "../../context/UserContext";
 const url = "https://www.canva.com/ai/code/thread/71507b40-d862-4984-bdac-9eea6e186924";
 
 const AccountProfile = () => {
