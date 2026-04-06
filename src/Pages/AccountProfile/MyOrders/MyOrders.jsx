@@ -2,12 +2,12 @@ import { useContext, useEffect, useState } from 'react';
 import './MyOrders.css'
 import { useRef } from 'react';
 import CartContext from '../../../context/CartContext';
-import {addProductToCart} from '../../../Services/constants'
+import {addProduct_ToCart} from '../../../Services/constants'
 const MyOrders = () => {
 
     useEffect(() => {
         try {
-            fetch(addProductToCart,
+            fetch(addProduct_ToCart,
                 {
                     method: "GET",
 
