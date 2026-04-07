@@ -1,6 +1,5 @@
 // استيراد الرابط من ملف الـ .env
-export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
+export const API_BASE_URL = "https://modern-shop-api.infinityfree.me";
 // روابط الملفات (Endpoints) عشان تسهل على نفسك
 export const LOGIN_URL = `${API_BASE_URL}/login.php`;
 export const PRODUCTS_URL = `${API_BASE_URL}/getProducts.php`;
