@@ -1,50 +1,43 @@
-import { Card, Row, Col, Button } from 'react-bootstrap'; // ✅ imports موجودين
-
 export const AddressCard = ({ address, onSetDefault }) => {
   return (
-    <Card className="shadow-sm border-primary mb-3" style={{ maxWidth: '400px' }}>
+    <div className="w-full max-w-sm rounded-lg border border-blue-500 shadow-sm mb-3">
 
-      <Card.Header className="bg-primary text-white">
-        <Row className="align-items-center">
-          <Col>{address.fullName}</Col>
-          <Col className="text-end">
-            {/* TODO: ربط Edit بفورم التعديل */}
-            <Button variant="light" size="sm">Edit</Button>
-          </Col>
-        </Row>
-      </Card.Header>
+      {/* Header */}
+      <div className="bg-blue-600 text-white px-4 py-3 rounded-t-lg flex items-center justify-between">
+        <span className="font-medium">{address.fullName}</span>
+        <button className="bg-white text-blue-600 text-sm px-3 py-1 rounded hover:bg-gray-100 transition">
+          Edit
+        </button>
+      </div>
 
-      <Card.Body>
-        <Card.Text as="div">
-          <div><strong>Phone:</strong> {address.phone}</div>
-          <hr />
-          <div>{address.address1}</div>
-          {address.address2 && <div>{address.address2}</div>}
-          {/* ✅ postal مش postalCode — يتطابق مع الـ state في الفورم */}
-          <div>{address.city}{address.state ? `, ${address.state}` : ""}</div>
-          <div>{address.postal}, {address.country}</div>
-          {address.notes && (
-            <div className="mt-2 text-muted"><small>📝 {address.notes}</small></div>
-          )}
-        </Card.Text>
+      {/* Body */}
+      <div className="p-4">
+        <div><strong>Phone:</strong> {address.phone}</div>
+        <hr className="my-2" />
+        <div>{address.address1}</div>
+        {address.address2 && <div>{address.address2}</div>}
+        <div>{address.city}{address.state ? `, ${address.state}` : ""}</div>
+        <div>{address.postal}, {address.country}</div>
+        {address.notes && (
+          <div className="mt-2 text-gray-500 text-sm">📝 {address.notes}</div>
+        )}
 
         {!address.defaultAddress && (
-          <Button
-            variant="outline-primary"
-            className="mt-2 w-100"
+          <button
+            className="mt-3 w-full border border-blue-500 text-blue-600 py-2 rounded hover:bg-blue-50 transition"
             onClick={() => onSetDefault?.(address._id)}
           >
             Set as Default
-          </Button>
+          </button>
         )}
 
         {address.defaultAddress && (
-          <div className="mt-2 text-center text-success">
-            <small>✅ Default Address</small>
+          <div className="mt-3 text-center text-green-600 text-sm">
+            ✅ Default Address
           </div>
         )}
-      </Card.Body>
+      </div>
 
-    </Card>
+    </div>
   );
 };
