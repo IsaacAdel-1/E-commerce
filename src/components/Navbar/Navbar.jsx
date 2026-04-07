@@ -43,6 +43,9 @@ const Navbar = ({ query }) => {
                     <li>
                         <HashLink to="#featured">Featured</HashLink>
                     </li>
+                     <li>
+                        <Link to="/profile">profile page</Link>
+                    </li>
                 </ul>
                 <div className="searchAndCart">
                     <div className="search">

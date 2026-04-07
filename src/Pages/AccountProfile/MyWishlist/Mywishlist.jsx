@@ -2,7 +2,7 @@
 import StarRatings from "react-star-ratings";
 import { Link } from "react-router-dom";
 import './Mywishlist.css'
-// import CARD from "../../../components/Card/Card";
+import CARD from "../../../components/Card/Card";
 import { useState } from "react";
 
 const Mywishlist = () => {
@@ -50,14 +50,14 @@ const ClearALL = ()=>{
         <>
             <div className="MywishlistContainer">
                 <header>
-                    <h3>My Wishlist</h3>
-                    <a className="ClearAllBtn"
+                    <h3 className='text-2xl font-semibold'>My Wishlist</h3>
+                    <a className="ClearAllBtn text-[#dc2626] text-2xl border rounded"
                         onClick={()=>{ClearALL();}}
                     >Clear All</a>
                 </header>
 
                 <div className="wishingOrdersCards">
-                  {/* <CARD products={sendingProducts} /> */}
+                  <CARD products={sendingProducts} />
 
                 </div>
             </div>

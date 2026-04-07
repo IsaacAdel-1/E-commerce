@@ -1,209 +1,149 @@
-import { useState } from 'react';
-import { Set_Address } from '../../../Services/constants';
+import { useState, useEffect } from 'react';
 
 const INITIAL_STATE = {
-  fullName: "",
-  phone: "",
-  address1: "",
-  address2: "",
-  city: "",
-  state: "",
-  postal: "",
-  country: "",
-  notes: "",
-  defaultAddress: false,
+  label: 'Home',
+  fullName: '',
+  streetAddress: '',
+  city: '',
+  state: '',
+  zipCode: '',
+  country: '',
+  phone: '',
+  isDefault: false,
 };
 
 export const AddressForm = ({ display, close, onSave }) => {
-  // ✅ الـ hooks فوق الـ early return دايمًا
-  const [addressData, setAddressData] = useState(INITIAL_STATE);
-  const [loading, setLoading]         = useState(false);
-  const [error, setError]             = useState("");
+  const [formData, setFormData] = useState(INITIAL_STATE);
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const handleEsc = (e) => { if (e.keyCode === 27) close(); };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [close]);
 
   if (!display) return null;
 
   const handleChange = (e) => {
-    const { name, type, value, checked } = e.target;
-    setAddressData(prev => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+    if (errors[name]) setErrors(prev => ({ ...prev, [name]: null }));
   };
 
-  const handleReset = () => {
-    setAddressData(INITIAL_STATE);
-    setError("");
+  const validate = () => {
+    let newErrors = {};
+    if (!formData.fullName.trim())      newErrors.fullName      = "Name is required";
+    if (!formData.streetAddress.trim()) newErrors.streetAddress = "Address is required";
+    if (!formData.phone.trim())         newErrors.phone         = "Phone is required";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // ✅ أول سطر دايمًا
-    setLoading(true);
-    setError("");
-
-    try {
-      // ✅ لو عندك auth token فعّل السطر ده
-      // const token = localStorage.getItem('token');
-
-      const response = await fetch(Set_Address, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          // 'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify(addressData),
-      });
-
-      if (!response.ok) {
-        const errData = await response.json().catch(() => ({}));
-        throw new Error(errData.message || `Server error: ${response.status}`);
-      }
-
-      handleReset();   // نضّف الفورم
-      onSave?.();      // ✅ يعمل refresh للـ list في الـ parent
-      close();         // ✅ يقفل الـ modal
-    } catch (err) {
-      setError(err.message || "Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSave(formData);
+    if (validate()) {
+      onSave?.(formData);
+      setFormData(INITIAL_STATE);
+      close();
+      
     }
   };
 
+  const inputClass = (field) =>
+    `w-full bg-gray-50 border rounded-lg px-4 py-3 text-sm outline-none transition-all ${
+      errors[field] ? 'border-red-400' : 'border-gray-200 focus:border-blue-600'
+    }`;
+
   return (
-    <div className="AddressFormContainer" onClick={close}>
-      <form
-        className="address-card"
-        autoComplete="on"
+    <div
+      className="fixed inset-0 flex items-center justify-center p-4 z-50"
+      style={{ background: 'rgba(0,0,0,0.4)' }}
+      onClick={close}
+    >
+      <div
+        className="bg-white w-full max-w-lg rounded-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
-        onSubmit={handleSubmit}
       >
-        <h2>Address Information</h2>
-        <h4>Please enter your complete address details</h4>
-
-        {/* ✅ عرض الـ error للـ user */}
-        {error && <p className="form-error" role="alert">{error}</p>}
-
-        <div className="form-grid">
-
-          <div className="form-group fullName">
-            <label htmlFor="fullName">Full name</label>
-            <input
-              id="fullName" name="fullName" type="text"
-              placeholder="John Doe" required
-              value={addressData.fullName}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group phoneNumber">
-            <label htmlFor="phone">Phone number</label>
-            <input
-              id="phone" name="phone" type="tel"
-              placeholder="+1 555 555 555" required
-              value={addressData.phone}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group full-width">
-            <label htmlFor="address1">Address line 1</label>
-            <input
-              id="address1" name="address1" type="text"
-              placeholder="Street address, P.O. box, company name" required
-              value={addressData.address1}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group full-width">
-            <label htmlFor="address2">Address line 2</label>
-            <input
-              id="address2" name="address2" type="text"
-              placeholder="Apartment, suite, unit (optional)"
-              value={addressData.address2}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="city">City</label>
-            <input
-              id="city" name="city" type="text"
-              placeholder="Cairo" required
-              value={addressData.city}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="state">State / Province / Region</label>
-            <input
-              id="state" name="state" type="text"
-              placeholder="Giza"
-              value={addressData.state}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="postal">ZIP / Postal code</label>
-            <input
-              id="postal" name="postal" type="text"
-              placeholder="12345" required
-              value={addressData.postal}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="country">Country</label>
-            <select
-              id="country" name="country" required
-              value={addressData.country}
-              onChange={handleChange}
-            >
-              <option value="">Select country</option>
-              <option value="Egypt">Egypt</option>
-              <option value="United States">United States</option>
-              <option value="United Kingdom">United Kingdom</option>
-              <option value="Saudi Arabia">Saudi Arabia</option>
-              <option value="United Arab Emirates">United Arab Emirates</option>
-            </select>
-          </div>
-
-          <div className="form-group full-width">
-            <label htmlFor="notes">Delivery notes</label>
-            <textarea
-              id="notes" name="notes"
-              placeholder="Leave gate code, delivery instructions, etc. (optional)"
-              value={addressData.notes}
-              onChange={handleChange}
-            />
-          </div>
-
+        <div className="flex justify-between items-center px-8 pt-8 pb-4">
+          <h2 className="text-xl font-bold text-gray-800">Add Address</h2>
+          <button onClick={close} className="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
         </div>
 
-        <div className="actions">
-          <label style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-            <input
-              type="checkbox" name="defaultAddress"
-              checked={addressData.defaultAddress}
-              onChange={handleChange}
-            />
-            Set as default address
-          </label>
+        <form className="px-8 pb-8 space-y-4" onSubmit={handleSubmit}>
 
-          <div>
-            {/* ✅ type="button" عشان ميعملش submit */}
-            <button type="button" className="btn secondary" onClick={handleReset}>
-              Reset
-            </button>
-            <button type="submit" className="btn" disabled={loading}>
-              {loading ? "Saving..." : "Save Address"}
-            </button>
+          <div className="space-y-2">
+            <label className="block text-xs font-bold text-gray-400 tracking-widest uppercase">Label</label>
+            <div className="flex gap-2">
+              {['Home', 'Work', 'Other'].map((l) => (
+                <button
+                  key={l}
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, label: l }))}
+                  className={`px-5 py-2 rounded-lg text-sm font-medium border transition-all ${
+                    formData.label === l
+                      ? 'bg-blue-700 border-blue-700 text-white'
+                      : 'bg-white border-gray-200 text-gray-500 hover:border-blue-400'
+                  }`}
+                >
+                  {l}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
 
-      </form>
+          <div className="space-y-1">
+            <label className="block text-xs font-bold text-gray-400 tracking-widest uppercase">Full Name</label>
+            <input name="fullName" value={formData.fullName} onChange={handleChange} type="text" placeholder="John Doe" className={inputClass('fullName')} />
+            {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>}
+          </div>
+
+          <div className="space-y-1">
+            <label className="block text-xs font-bold text-gray-400 tracking-widest uppercase">Street Address</label>
+            <input name="streetAddress" value={formData.streetAddress} onChange={handleChange} type="text" placeholder="123 Main St, Apt 4B" className={inputClass('streetAddress')} />
+            {errors.streetAddress && <p className="text-red-500 text-xs mt-1">{errors.streetAddress}</p>}
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-1">
+              <label className="block text-xs font-bold text-gray-400 tracking-widest uppercase">City</label>
+              <input name="city" value={formData.city} onChange={handleChange} type="text" placeholder="Cairo" className={inputClass('city')} />
+            </div>
+            <div className="space-y-1">
+              <label className="block text-xs font-bold text-gray-400 tracking-widest uppercase">State</label>
+              <input name="state" value={formData.state} onChange={handleChange} type="text" placeholder="Giza" className={inputClass('state')} />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-1">
+              <label className="block text-xs font-bold text-gray-400 tracking-widest uppercase">Zip Code</label>
+              <input name="zipCode" value={formData.zipCode} onChange={handleChange} type="text" placeholder="12345" className={inputClass('zipCode')} />
+            </div>
+            <div className="space-y-1">
+              <label className="block text-xs font-bold text-gray-400 tracking-widest uppercase">Country</label>
+              <input name="country" value={formData.country} onChange={handleChange} type="text" placeholder="Egypt" className={inputClass('country')} />
+            </div>
+          </div>
+
+          <div className="space-y-1">
+            <label className="block text-xs font-bold text-gray-400 tracking-widest uppercase">Phone</label>
+            <input name="phone" value={formData.phone} onChange={handleChange} type="tel" placeholder="+20 101 234 5678" className={inputClass('phone')} />
+            {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
+          </div>
+
+          <div className="flex items-center gap-3 py-1">
+            <input name="isDefault" checked={formData.isDefault} onChange={handleChange} type="checkbox" id="isDefault" className="w-5 h-5 rounded border-gray-300 cursor-pointer accent-blue-700" />
+            <label htmlFor="isDefault" className="text-sm text-gray-500 cursor-pointer select-none">Set as default address</label>
+          </div>
+
+          <div className="flex gap-4 pt-2">
+            <button type="button" onClick={close} className="flex-1 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors text-sm">Cancel</button>
+            <button type="submit" className="flex-1 py-3 bg-blue-700 text-white font-semibold rounded-xl hover:bg-blue-800 transition-all text-sm">Save Address</button>
+          </div>
+
+        </form>
+      </div>
     </div>
   );
 };
