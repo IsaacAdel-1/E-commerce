@@ -24,9 +24,9 @@ function App() {
       <UserProvider>
       <CartProvider>
         <ToastContainer position="bottom-right" autoClose={1500} />
-        {/* <Navbar query={setQuery} /> */}
+        <Navbar query={setQuery} /> 
         <Router query = {query}  />
-        {/* <Footer/> */}
+        <Footer/>
       </CartProvider>  
       </UserProvider>
       
