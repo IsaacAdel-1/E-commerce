@@ -56,10 +56,11 @@ const ClearALL = ()=>{
                     >Clear All</a>
                 </header>
 
-                <div className="wishingOrdersCards">
-                  <CARD products={sendingProducts} />
-
-                </div>
+               <div className="wishingOrdersCards">
+                {sendingProducts.map(product => (
+                    <CARD key={product.id} product={product} />
+                ))}
+               </div>
             </div>
         </>
     )
