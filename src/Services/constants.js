@@ -1,7 +1,8 @@
 // استيراد الرابط من ملف الـ .env
-export const API_BASE_URL = "https://modern-shop-api.infinityfree.me";
+// export const API_BASE_URL = "https://modern-shop-api.infinityfree.me";
+export const API_BASE_URL = "http://localhost/ModernShopWebsite";
 // روابط الملفات (Endpoints) عشان تسهل على نفسك
-export const LOGIN_URL = `${API_BASE_URL}/login.php`;
+export const LOGIN_URL = `${API_BASE_URL}/LogInRequest.php`;
 export const PRODUCTS_URL = `${API_BASE_URL}/getProducts.php`;
 export const IMAGES_URL = `${API_BASE_URL}/Uploads`;
 export const Set_Address = `${API_BASE_URL}/Set_Address.php`;

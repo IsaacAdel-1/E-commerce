@@ -90,9 +90,9 @@ const UserProvider = ({ children }) => {
             return data ;
         }
         catch(err){
-            setError(err.message)
+            setError("ُError")
             console.error("Error : "+ err.message )
-            return null ;
+            // return null ;
         }
         finally{
             setLoading(false)

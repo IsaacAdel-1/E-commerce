@@ -20,7 +20,7 @@ const Navbar = ({ query }) => {
     const handleSearch = (e) => {
         setSearch(e.target.value);
     };
-
+    
   useProductSearch(search , query)
     return (
         <>
@@ -38,10 +38,10 @@ const Navbar = ({ query }) => {
                         <Link to="/shop">Shop</Link>
                     </li>
                     <li>
-                        <HashLink  to="#categories">Categories</HashLink>
+                        <HashLink  to="/#categories">Categories</HashLink>
                     </li>
                     <li>
-                        <HashLink to="#featured">Featured</HashLink>
+                        <HashLink to="/#featured">Featured</HashLink>
                     </li>
                      <li>
                         <Link to="/profile">profile page</Link>
@@ -67,16 +67,16 @@ const Navbar = ({ query }) => {
                       
                     </div>
 
-                              <div className="shoppingCart">
+                        <div className="shoppingCart">
                            <Link to={'/profile/my-orders'}><MdOutlineShoppingCart size={24} className="ShoppingCart">
                                 
                             </MdOutlineShoppingCart></Link>
-                            <span className="numberOfcarts">{state.length}</span>
+                            <span key={state.length} className="badge-animate numberOfcarts">{state.length}</span>
                         </div>
                     <div className="Register">
                         { user.name ? <Link  to ={'/profile'} className="fs-5 text-decoration-none text-dark">{user.name}</Link> :
                         <Link to={'/login'} className="LogninButton">Log In</Link>}
-                        {user.name ? <img src={`${IMAGES_URL}${user.image}`} alt="" className="userImage" onClick={()=>{navigate('/profile')}} /> :
+                            {user.name ? <img src={`${IMAGES_URL}/${user.image}`} alt="Profile" className="userImage" onClick={()=>{navigate('/profile')}} onError={(e) => e.target.src = 'default-avatar.png'}/> :
                         <Link className="signUPButton" to={'/signup'}>Sign Up</Link>}
                         {user.name ? "" :""}
                     </div>

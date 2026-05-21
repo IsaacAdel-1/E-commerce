@@ -55,11 +55,17 @@ const Shop = ({query}) => {
 
 
   const [initial, setInitial] = useState(0);
-  const [end, setEnd] = useState(16);
+  const [end, setEnd] = useState(12);
 
 
 
-  
+  const CATEGORIES = [
+  'beauty', 'fragrances', 'furniture', 'groceries',
+  'home_decoration', 'kitchen_accessories', 'laptops',
+  'mens_shirts', 'mens_shoes', 'mens_watches', 'mobile_accessories',
+  'motorcycle', 'skin_care', 'smartphones', 'sports_accessories',
+  'sunglasses', 'tablets', 'tops'
+];
 
 
   useEffect(() => {
@@ -115,155 +121,19 @@ const Shop = ({query}) => {
 
             {/* Set Categories */}
             <div className="categories">
-              <div className="categoryList"
-
-              >
+              <div className="categoryList">
                 <h3>Category</h3>
                 <ul>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.beauty}
-                      onChange={() => { handleCheckboxChange('beauty'); }}
-                    />
-                    <span>beauty</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.fragrances}
-                      onChange={() => { handleCheckboxChange('fragrances'); }}
-                    />
-                    <span>fragrances</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.furniture}
-                      onChange={() => { handleCheckboxChange('furniture')  }}
-                    />
-                    <span>furniture</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.groceries}
-                      onChange={() => { handleCheckboxChange('groceries')  }}
-                    />
-                    <span>groceries</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.home_decoration}
-                      onChange={() => { handleCheckboxChange('home_decoration')  }}
-                    />
-                    <span>home decoration</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.kitchen_accessories}
-                      onChange={() => { handleCheckboxChange('kitchen_accessories')  }}
-                    />
-                    <span>kitchen accessories</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.laptops}
-                      onChange={() => { handleCheckboxChange('laptops')  }}
-                    />
-                    <span>laptops</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.mens_shirts}
-                      onChange={() => { handleCheckboxChange('mens_shirts')  }}
-                    />
-                    <span>mens shirts</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.mens_shoes}
-                      onChange={() => { handleCheckboxChange('mens_shoes')  }}
-                    />
-                    <span>mens shoes</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.mens_watches}
-                      onChange={() => { handleCheckboxChange('mens_watches')  }}
-                    />
-                    <span>mens watches</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.mobile_accessories}
-                      onChange={() => { handleCheckboxChange('mobile_accessories')  }}
-                    />
-                    <span>mobile accessories</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.motorcycle}
-                      onChange={() => { handleCheckboxChange('motorcycle')  }}
-                    />
-                    <span>motorcycle</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.skin_care}
-                      onChange={() => { handleCheckboxChange('skin_care')  }}
-                    />
-                    <span>skin care</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.smartphones}
-                      onChange={() => { handleCheckboxChange('smartphones')  }}
-                    />
-                    <span>smartphones</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.sports_accessories}
-                      onChange={() => { handleCheckboxChange('sports_accessories')  }}
-                    />
-                    <span>sports accessories</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.sunglasses}
-                      onChange={() => { handleCheckboxChange('sunglasses')  }}
-                    />
-                    <span>sunglasses</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.tablets}
-                      onChange={() => { handleCheckboxChange('tablets')  }}
-                    />
-                    <span>tablets</span>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      checked={filters.tops}
-                      onChange={() => { handleCheckboxChange('tops')  }}
-                    />
-                    <span>tops</span>
-                  </li>
+                  {CATEGORIES.map((category) => (
+                    <li key={category}>
+                      <input
+                        type="checkbox"
+                        checked={filters[category]}
+                        onChange={() => handleCheckboxChange(category)}
+                      />
+                      <span>{category.replace(/_/g, ' ')}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
@@ -386,12 +256,13 @@ const Shop = ({query}) => {
             <button className="ApplyFilter" onClick={() => { handleFilter(); console.log("Clicked") }}>Apply Filter</button>
           </div>
 
-          <div className="featuredProducts showingProducts ">
-            {productsComing.length > 1 ? 
+          {/* <div className="featuredProducts showingProducts "> */}
+            <div className="container flex gap-5 p-5 flex-wrap justify-start content-start">
+            {productsComing.length > 2 ? productsComing.slice(initial , end).map((product) => { 
               
 
-            <CARD products = {productsComing.slice(initial , end) } />
-              
+            return (<CARD product = {product} />)
+          })
              : ""}
           </div>
         </div>
@@ -403,7 +274,7 @@ const Shop = ({query}) => {
             className="pageNumber bg-blue-500 text-black rounded-lg"
             id="1"
             onClick={() => {
-              handlePageNumber(0, 16);
+              handlePageNumber(0, 12);
               ScrollWindow()
             }}
 
@@ -415,14 +286,24 @@ const Shop = ({query}) => {
             className="pageNumber bg-blue-500 text-black rounded-lg"
             id="2"
             onClick={() => {
-              handlePageNumber(16, 31);
+              handlePageNumber(13, 25);
               ScrollWindow()
             }}
              style={{display : NoProducts > 9 ? "block" : "none" }}
           >
             2
           </button>
-          
+          <button
+            className="pageNumber bg-blue-500 text-black rounded-lg"
+            id="2"
+            onClick={() => {
+              handlePageNumber(26, 31);
+              ScrollWindow()
+            }}
+             style={{display : NoProducts > 9 ? "block" : "none" }}
+          >
+            3
+          </button>
         </div>
       </div>
     </>

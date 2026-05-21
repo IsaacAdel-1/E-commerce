@@ -5,12 +5,19 @@ import { Link } from 'react-router-dom';
 import './Card.css';
 import { useContext, useState } from 'react';
 import CartContext from '../../context/CartContext';
-import {addProduct_ToCart} from '../../Services/constants'
-const CARD = ({ products }) => {
-    
-    const { Add } = useContext(CartContext);
+import { addProduct_ToCart } from '../../Services/constants'
 
-    const addProductToCart = (clickedProduct) => {
+
+import { toast } from 'react-toastify';
+
+const CARD = ({ product }) => {
+
+    const { Add } = useContext(CartContext);
+    const [isAdded , setIsAdded] = useState(false);
+    const handleAddToCart = (clickedProduct) => {
+    toast.success(`${product.title} has been added to the cart 🛒`, {
+      theme: "colored"
+    });
         try {
 
 
@@ -22,7 +29,7 @@ const CARD = ({ products }) => {
                 rate: clickedProduct.rating
             }
 
-            fetch(addProduct_ToCart , {
+            fetch(addProduct_ToCart, {
                 method: 'POST',
                 body: JSON.stringify(newProduct),
                 headers: {
@@ -36,84 +43,125 @@ const CARD = ({ products }) => {
 
             ).then(data => {
                 console.log(data);
-                alert(data.message)
+                // alert(data.message)
             })
 
 
 
         }
         catch (e) { console.log("Error : " + e.message) }
+  
     }
 
     return (
         <>
-            <div className="container flex  gap-5 p-5 flex-wrap justify-start">
-                {
 
-                    products.map((product) => {
+            
+         <div className="group relative flex flex-col overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all hover:shadow-lg hover:border-blue-200 w-full max-w-[18rem] h-[442px]">
+        
+                {/* 1. Image Section with Hover Effect & Badge */}
 
-                        return (
-                            <>
-                                <div className="group  border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 w-[14rem] " key={product.id}>
-                                    {/* 1. حاوية الصورة */}
-                                    <Link to={`/product/${product.id}`} className="block overflow-hidden bg-gray-50">
-                                        <img
-                                            src={product.images[0]}
-                                            alt={product.title}
-                                            className="w-full h-56 object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105"
-                                            loading="lazy"
-                                        />
-                                    </Link>
+                <div className="relative overflow-hidden bg-gray-50 h-56">
 
-                                    {/* 2. محتوى الكارت */}
-                                    <div className="px-2">
-                                        {/* العنوان */}
-                                        <Link
-                                            to={`/product/${product.id}`}
-                                            className="block text-sm font-semibold text-gray-800 hover:text-blue-600 transition-colors mb-2 h-10 overflow-hidden"
-                                        >
-                                            {product.title.length > 25 ? product.title.slice(0, 24) + "..." : product.title}
-                                        </Link>
+                    {product.discountPercentage > 0 && (
 
+                        <span className="absolute top-2 left-2 z-10 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-full shadow-sm">
 
-                                        <div className="flex items-center justify-between mb-3">
-                                            <div className="flex items-center">
-                                                <StarRatings
-                                                    rating={product.rating}
-                                                    starRatedColor="#FBBF24" 
-                                                    numberOfStars={5}
-                                                    starDimension="16px"
-                                                    starSpacing="1px"
-                                                    name="rating"
-                                                />
-                                            </div>
-                                            <span className="bg-red-50 text-red-600 text-[10px] font-bold px-2 py-1 rounded-full">
-                                                {product.discountPercentage}% OFF
-                                            </span>
-                                        </div>
+                            {Math.round(product.discountPercentage)}% OFF
 
-                                        {/* السعر وزرار الإضافة */}
-                                        <div className="flex items-center justify-between mt-auto">
-                                            <div className="text-lg font-bold text-gray-900">
-                                                ${product.price}
-                                            </div>
-                                            <button
-                                                onClick={() => { addProductToCart(product); Add(product); }}
-                                                className="w-10 h-10 flex items-center justify-center bg-gray-900 text-white rounded-full hover:bg-blue-600 transition-colors shadow-sm active:scale-95"
-                                            >
-                                                <span className="text-xl font-light">+</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </>
-                          
-             
+                        </span>
+
+                    )}
+
+                    <Link to={`/product/${product.id}`} className="block h-full">
+
+                        <img
+
+                            src={product.images[0]}
+
+                            alt={product.title}
+
+                            className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+
+                            loading="lazy"
+
+                        />
+
+                    </Link>
+
+                </div>
 
 
-                        )
-                    })
 
-                }</div></>)
+                {/* 2. Content Section */}
+
+                <div className="flex flex-1 flex-col p-4">
+
+                    <Link to={`/product/${product.id}`} className="block">
+
+                        <h3 className="text-sm font-semibold text-gray-800 hover:text-blue-600 transition-colors h-10 overflow-hidden line-clamp-2">
+
+                            {product.title}
+
+                        </h3>
+
+                    </Link>
+
+
+
+                    <div className="mt-2 flex items-center justify-between">
+
+                        <StarRatings
+
+                            rating={product.rating}
+
+                            starRatedColor="#FBBF24"
+
+                            numberOfStars={5}
+
+                            starDimension="14px"
+
+                            starSpacing="1px"
+
+                        />
+
+                        <span className="text-[10px] text-gray-400 font-medium">
+
+                            ({product.availabilityStatus || 'In Stock'})
+
+                        </span>
+
+                    </div>
+
+
+
+                    {/* 3. Price & Add Button */}
+
+                    <div className="mt-4 flex items-center justify-between">
+
+                        <span className="text-lg font-bold text-gray-900">${product.price}</span>
+
+                        <button
+
+                            onClick={() => {handleAddToCart(product); Add(product)}}
+
+                            className={`flex h-9 w-9 items-center justify-center rounded-lg bg-gray-900
+                               text-white transition-all hover:bg-blue-600 active:scale-90 shadow-md cursor-pointer`}
+
+                        >
+
+                            <span className={` text-xl font-light `}>+ </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </>
+    )
 }
 export default CARD;

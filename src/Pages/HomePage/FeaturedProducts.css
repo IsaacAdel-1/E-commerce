@@ -7,9 +7,9 @@
     padding-left: 5vw;
     background-color: #f9fafb;
 }
-.featuredText{
+.featured-header{
     text-align: center;
-    margin: 70px 0;
+    
 }
 .featuredProducts {
     display: flex;

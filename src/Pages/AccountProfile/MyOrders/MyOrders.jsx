@@ -15,7 +15,7 @@ const MyOrders = () => {
             )
         }
         catch (e) {
-
+            console.error("Error while fetching data " + e)
         }
     }, [])
 
@@ -23,7 +23,7 @@ const MyOrders = () => {
 
     const { state, Add, clear, remove, increase, decrease } = useContext(CartContext)
 
-    console.log(state);
+   
     const handleReorder = (status, orderId) => {
         if (status === "Delivered") {
             console.log("Reorder");
@@ -108,20 +108,7 @@ const MyOrders = () => {
                                         </div>
                                     </div>
                                 </div>
-                                {/* <div className={` overflow-hidden transition-all duration-1000 ease-out
-                                            ${ID.includes(order.id)
-                                            ? "max-h-[400px] opacity-100 translate-y-0"
-                                            : "max-h-0 opacity-0 -translate-y-1"}
-                                        `}
-                                        >
-                                        <div className="pt-3">
-                                            <div className="order-progress">
-                                            <h4>Order Progress</h4>
-                                            <div className={`${order.status} progress-bar`}></div>
-                                            </div>
-                                            <img src={order.images[0]} alt="" width={200} />
-                                        </div>
-                                    </div> */}
+                          
                                 <div className="line"></div>
 
                                 <div className="order-footer flex justify-center items-center">
@@ -164,7 +151,7 @@ const MyOrders = () => {
                 }
 
                 <div className="clearBtn">
-                    <button onClick={() => { clear() }} className='bg-red-600 p-2 rounded text-white'>Clear Cart</button>
+                    {state.length > 0 ?<button onClick={() => { clear() }} className='bg-red-600 p-2 rounded text-white cursor-pointer'>Clear Cart</button>:""}
                 </div>
             </div>
         </>

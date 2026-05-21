@@ -11,8 +11,8 @@ import PaymentMethods from "./Pages/AccountProfile/PaymentMethods/PaymentMethods
 import ProfileSettings from "./Pages/AccountProfile/ProfileSettings/ProfileSettings";
 import Security from "./Pages/AccountProfile/ProfileSecurity/Security";
 import ContactUs from "./Pages/ContactUs/ContactUs";
-
-
+import AdminPanel from "./Pages/AdminPanel/AdminPanel";
+import Index from "./Pages/AdminPanel/Index";
 const Shop = lazy(() => import("./Pages/ShopPage/Shop"));
 const SingleProduct = lazy(() => import("./Pages/ProductPage/SingleProduct"));
 const LoginPage = lazy(() => import("./Pages/LoginAndSignUp/LoginPage"));
@@ -29,7 +29,19 @@ const Router = ({ query  }) => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/contact-us" element={<ContactUs/>}/>
-
+        <Route path="/Admin-panel" element={<AdminPanel/>}>
+          {/* <Route path="/dashboard" />
+          <Route path="/orders" />
+          <Route path="/customers" />
+          <Route path="/reports" />
+          <Route path="/discounts" />
+          <Route path="/integrations" />
+          <Route path="/help" />
+          <Route path="/settings" /> */}
+          
+          
+        </Route>
+        <Route path="/in" element={<Index/>}/>
         {/* Profile Links */}
         <Route path="/profile" element={<AccountProfile />} >
           <Route index element={<DashBoard/>}/>

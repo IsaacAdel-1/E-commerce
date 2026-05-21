@@ -47,14 +47,13 @@ const LoginPage = () => {
   const handleSubmit =  async (e) => {
     
     e.preventDefault();
-    const response =  await login(UserData)
-    console.log(response);
-   if (response && response.status === 'success') {
-          console.log("Login successful! Redirecting to Home...");
-          navigate('/'); 
-      } else {
-          console.log("Login condition not met. Status is not 'success'.");
-      }
+    try{
+      const response =  await login(UserData)
+      console.log(response);
+    }catch(err){
+      console.log("Login condition not met. Status is not 'success'." + err.message);
+    }
+  
   };
 
   return (
