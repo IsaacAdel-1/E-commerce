@@ -101,7 +101,7 @@ const PaymentMethods = () => {
                <header className="d-flex justify-content-between align-items-center">
                     <h2 >Payment Methods</h2>
                     <button onClick={()=>handleNewCard()} className="btn btn-primary">Add New Card</button>
-                    
+                    <h1 className="text-center ">Working on it...</h1>
                </header>
 
                

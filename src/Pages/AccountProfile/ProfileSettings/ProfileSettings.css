@@ -1,55 +1,213 @@
-.profileSettingsContain{
+/* ===== Page Layout ===== */
+.ps-page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    font-family: inherit;
+}
+
+.ps-header {
+    margin-bottom: 2rem;
+}
+
+.ps-header h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin: 0 0 4px;
+}
+
+.ps-header p {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+}
+
+/* ===== Card ===== */
+.ps-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* ===== Avatar Row ===== */
+.ps-avatar-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.ps-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #EEEDFE;
+    color: #534AB7;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 1px;
+}
+
+.ps-avatar-info h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin: 0 0 2px;
+}
+
+.ps-avatar-info p {
+    font-size: 13px;
+    color: #6b7280;
+    margin: 0;
+}
+
+.ps-avatar-btn {
+    margin-left: auto;
+    background: transparent;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: #374151;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s, border-color 0.15s;
+    white-space: nowrap;
+}
+
+.ps-avatar-btn:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+}
+
+/* ===== Card Title ===== */
+.ps-card-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 1.25rem;
+}
+
+/* ===== Form Grid ===== */
+.ps-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 560px) {
+    .ps-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ps-avatar-row {
+        flex-wrap: wrap;
+    }
+
+    .ps-avatar-btn {
+        margin-left: 0;
+    }
+}
+
+/* ===== Form Group ===== */
+.ps-form-group {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin-top: 50px;
-    gap: 50px;
-    padding: 30px;
+    gap: 6px;
 }
 
-.profileSettingsContain .personal_information h3{
-    margin-bottom: 20px;    
+.ps-form-group.full {
+    grid-column: 1 / -1;
 }
 
-.profileSettingsContain form .personal_information {
+.ps-form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    letter-spacing: 0.04em;
+}
+
+.ps-form-group input,
+.ps-form-group select {
     width: 100%;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: #1a1a2e;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    appearance: auto;
+}
+
+.ps-form-group input::placeholder {
+    color: #d1d5db;
+}
+
+.ps-form-group input:hover,
+.ps-form-group select:hover {
+    border-color: #9ca3af;
+}
+
+.ps-form-group input:focus,
+.ps-form-group select:focus {
+    border-color: #534AB7;
+    box-shadow: 0 0 0 3px rgba(83, 74, 183, 0.12);
+    background: #fff;
+}
+
+/* ===== Footer ===== */
+.ps-footer {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
-    gap: 10px;
-    
+    padding: 0.5rem 0 1rem;
+    gap: 12px;
 }
-.profileSettingsContain form .personal_information  .form-row{
-    width: 40%;
-    margin: 0 20px;
+
+.ps-secure-note {
+    font-size: 12px;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
-.profileSettingsContain .personal_information form .form-row label{
-    font-size: 18px;
-    margin-left: 5px;
-    margin-bottom: 10px;
+
+/* ===== Save Button ===== */
+.ps-save-btn {
+    background: #534AB7;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    min-width: 140px;
 }
-.preferences select{
-    width: 40%;
+
+.ps-save-btn:hover:not(:disabled) {
+    opacity: 0.88;
 }
-.preferences label{
-    margin: 20px 0;
-    margin-left: 10px;
+
+.ps-save-btn:active:not(:disabled) {
+    transform: scale(0.98);
 }
-.preferences .form-group{
-    margin: 0 20px;
-}
-@media (max-width: 768px) {
-    .personal_information , .preferences{
-        border: 1px solid #ccc;
-        padding: 20px;
-        margin: 20px 0;
-        border-radius: 3px;
-    }
-    .personal_information .form-row input{
-        width: 50vw;
-        margin-top: 10px;
-    }
-    .preferences .form-group select{
-        width: 50vw;
-    }
+
+.ps-save-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
