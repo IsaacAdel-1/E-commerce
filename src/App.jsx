@@ -12,7 +12,7 @@ import CartProvider from './Providers/TRyingCartProvider'
 const url = "https://www.canva.com/ai/code/thread/71507b40-d862-4984-bdac-9eea6e186924"
 
 function App() {
-  const [query, setQuery] = useState("")
+  const [query, setQuery] = useState([])
 
 
   return (
