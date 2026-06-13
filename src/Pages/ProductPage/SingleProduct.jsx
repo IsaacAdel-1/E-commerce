@@ -45,8 +45,8 @@ const SingleProduct = () => {
     useEffect(() => {
         fetch(`https://dummyjson.com/products/${id}`)
             .then(res => res.json())
-            .then(res => { 
-                console.log(res.category); setProduct(res)
+            .then(res => {
+                setProduct(res)
                 return fetch(`https://dummyjson.com/products/category/${res.category}`)
             })
             .then(res => res.json())

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FaLock } from "react-icons/fa";
 import "./ProfileSettings.css";
 import { UpdateUserData } from "../../../Services/constants";
 
@@ -206,7 +207,7 @@ const ProfileSettings = () => {
 
                 {/* Footer */}
                 <div className="ps-footer">
-                    <span className="ps-secure-note">🔒 Your data is encrypted and secure</span>
+                    <span className="ps-secure-note"><FaLock /> Your data is encrypted and secure</span>
                     <button className="ps-save-btn" type="submit" disabled={loading}>
                         {loading ? "Saving..." : saved ? "✓ Saved!" : "Save changes"}
                     </button>

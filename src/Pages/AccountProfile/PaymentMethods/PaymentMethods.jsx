@@ -48,7 +48,6 @@ const PaymentMethods = () => {
 
     const handleNewCard = () => {
         setCards(true);
-        console.log(cards);
     }
     const submit = async (e)=>{
         e.preventDefault();
@@ -85,13 +84,12 @@ const PaymentMethods = () => {
             if(!response.ok){
                 throw new Error('Something went wrong!');
             }
-            const data = await response.json();
-            console.log(data);
+            await response.json();
             setCards(false);
             
     }
     catch(error){
-        console.log(error);
+        setError(error.message);
         }
     
 }

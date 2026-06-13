@@ -101,3 +101,19 @@
 .ArrowDown:hover {
     background-color: rgba(229, 231, 235 ,.2);
 }
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 1024px) {
+    .categoriesSection { width: 92%; gap: 20px; }
+    .CategoryCard { width: 30%; min-width: 160px; }
+}
+
+@media (max-width: 768px) {
+    .shopCategContainer { padding: 50px 0; }
+    .CategoryCard { width: 45%; height: 260px; }
+    .ArrowDown { width: auto; font-size: 32px; padding: 0 12px; }
+}
+
+@media (max-width: 480px) {
+    .CategoryCard { width: 100%; height: 240px; }
+}

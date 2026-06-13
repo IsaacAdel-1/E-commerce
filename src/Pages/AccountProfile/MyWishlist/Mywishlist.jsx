@@ -44,7 +44,6 @@ const Mywishlist = () => {
 
 const ClearALL = ()=>{
     setSendingProducts([]);
-    console.log(sendingProducts);
 }
     return (
         <>

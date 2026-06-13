@@ -64,6 +64,6 @@
         
     }
     .securityContainer form button {
-        width: 100vw;
+        width: 100%;
     }
 }

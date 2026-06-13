@@ -78,14 +78,12 @@ const UserProvider = ({ children }) => {
                 credentials : 'include'
             })
             const data = await response.json()
-            console.log(data)
             if(!response.ok){
               
               throw new Error (data.message || "Error in login")
             }
             
             setUser({ ...data.userData });
-            console.log(user);
             localStorage.setItem('user', JSON.stringify(data.userData));
             return data ;
         }
@@ -112,7 +110,6 @@ const UserProvider = ({ children }) => {
     })
     setError(null)
     setLoading(false)
-    console.log("user is Deleted" + user);
     navigator('/')
     window.scrollTo(0,0)
   }

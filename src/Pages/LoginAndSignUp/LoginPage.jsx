@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, createContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import "./LoginPage.css";
@@ -48,10 +48,9 @@ const LoginPage = () => {
     
     e.preventDefault();
     try{
-      const response =  await login(UserData)
-      console.log(response);
+      await login(UserData)
     }catch(err){
-      console.log("Login condition not met. Status is not 'success'." + err.message);
+      console.error("Login failed: " + err.message);
     }
   
   };

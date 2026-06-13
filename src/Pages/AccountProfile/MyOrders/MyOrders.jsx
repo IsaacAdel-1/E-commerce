@@ -26,7 +26,7 @@ const MyOrders = () => {
    
     const handleReorder = (status, orderId) => {
         if (status === "Delivered") {
-            console.log("Reorder");
+            // Reorder flow to be implemented
         }
         else {
             const isConfirm = window.confirm("Are you sure you want to cancel this order?");

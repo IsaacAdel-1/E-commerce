@@ -152,8 +152,79 @@
   border-radius: 50%;
   padding: 2px 6px;
 }
+/* Hamburger toggle: hidden on desktop, shown on smaller screens */
+.menuToggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #3b33dc;
+    cursor: pointer;
+    padding: 4px;
+}
+
 @media (max-width: 1080px) {
-    .nav-links{
-        display: none;
+    /* Two clean rows: [☰  Logo  cart/login] on top, full-width search below */
+    .main-nav {
+        position: relative;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 14px;
+        row-gap: 12px;
+        height: auto;
+        padding: 12px 16px;
     }
+    .menuToggle { display: block; order: 1; }
+    .logo { order: 2; }
+    .logo .LogoLink { margin-left: 0; }
+
+    /* Links open as a dropdown panel under the whole navbar */
+    .nav-links {
+        display: none;
+        order: 3;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: #fff;
+        padding: 10px 20px;
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { margin-right: 0; margin-bottom: 15px; }
+
+    /* Cart + register stay top-right; search drops to its own full-width row */
+    .searchAndCart {
+        order: 4;
+        flex-basis: 100%;
+        width: 100%;
+        align-items: center;
+        gap: 14px;
+    }
+    .search {
+        order: 1;
+        flex: 1;
+        margin-right: 0;
+    }
+    .search input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 6px 15px 6px 38px;
+        margin-right: 0;
+    }
+    .search .searchIcon { left: 14px; }
+    .shoppingCart { order: 2; }
+    .Register { order: 3; }
+}
+
+@media (max-width: 480px) {
+    .main-nav { padding: 10px 12px; gap: 10px; }
+    .logo .LogoLink { font-size: 20px; }
+    .Register .LogninButton,
+    .Register .signUPButton { font-size: 1rem !important; padding: 5px 8px; }
+    .userImage { width: 40px; height: 40px; }
 }

@@ -29,18 +29,7 @@ const Router = ({ query  }) => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/contact-us" element={<ContactUs/>}/>
-        <Route path="/Admin-panel" element={<AdminPanel/>}>
-          {/* <Route path="/dashboard" />
-          <Route path="/orders" />
-          <Route path="/customers" />
-          <Route path="/reports" />
-          <Route path="/discounts" />
-          <Route path="/integrations" />
-          <Route path="/help" />
-          <Route path="/settings" /> */}
-          
-          
-        </Route>
+        <Route path="/Admin-panel" element={<AdminPanel/>} />
         <Route path="/in" element={<Index/>}/>
         {/* Profile Links */}
         <Route path="/profile" element={<AccountProfile />} >

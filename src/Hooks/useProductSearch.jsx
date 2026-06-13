@@ -129,10 +129,9 @@ const useProductSearch = (search , query)=>{
                     query(Array.from(UniqueProducts.values()));
                     navigate(`/shop`);
                 } catch (err) {
-                    if (err.name == "AbortError") {
-                        console.log("Abort Error");
-                    } else {
-                        console.log(err + " Erorr");
+                    // AbortError is expected when a newer search cancels this one — ignore it
+                    if (err.name !== "AbortError") {
+                        console.error("Product search failed:", err);
                     }
                 } finally {
                     if (abortRef.current == controller) {

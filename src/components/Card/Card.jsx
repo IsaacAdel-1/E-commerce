@@ -39,17 +39,9 @@ const CARD = ({ product }) => {
             }).then(response => {
                 if (!response.ok) { throw new Error("Network Response was not ok"); }
                 return response.json()
-            }
-
-            ).then(data => {
-                console.log(data);
-                // alert(data.message)
             })
-
-
-
         }
-        catch (e) { console.log("Error : " + e.message) }
+        catch (e) { console.error("Error : " + e.message) }
   
     }
 

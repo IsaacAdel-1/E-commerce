@@ -79,17 +79,17 @@ footer .ModernShop div {
     cursor: pointer;
 }
 
-@media (max-width:750px) {
-    footer{
-        font-size: 10px;
-    }
-    .Footer div h3{
-        font-size: 12px;
-    }
+/* Widen the columns on smaller screens instead of shrinking the text to an
+   unreadable size (it used to drop to 7px). */
+@media (max-width: 750px) {
+    .Footer div { width: 45%; }
+    .Footer div h3 { font-size: 18px; }
 }
 
-@media (max-width:500px) {
-    footer{
-        font-size: 7px;
-    }
+@media (max-width: 500px) {
+    .Footer { gap: 10px; }
+    .Footer div { width: 100%; }
+    .Footer div h3 { font-size: 18px; }
+    .FooterEnterEmail input,
+    .FooterEnterEmail button { width: 100%; box-sizing: border-box; }
 }

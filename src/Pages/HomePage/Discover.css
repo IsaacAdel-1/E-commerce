@@ -51,3 +51,30 @@
     width: 300px;
     height: 350px;
 }
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 1024px) {
+    .discoverContent h2 { font-size: 38px; }
+    .discoverImage img { width: 250px; height: 290px; }
+}
+
+@media (max-width: 768px) {
+    /* Stack the text above the image */
+    .discoverContainer {
+        flex-direction: column;
+        height: auto;
+        gap: 30px;
+        padding: 40px 20px;
+        text-align: center;
+    }
+    .discoverContent { width: 100%; }
+    .discoverContent h2 { font-size: 32px; }
+    .discoverButtons { width: 100%; max-width: 320px; margin: 0 auto; }
+}
+
+@media (max-width: 480px) {
+    .discoverContent h2 { font-size: 26px; }
+    .discoverContent .Explore { font-size: 1.2rem; margin-bottom: 30px; }
+    .discoverImage img { width: 100%; max-width: 280px; height: auto; }
+    .discoverButtons button { padding: 12px 18px; }
+}

@@ -1,10 +1,6 @@
-// import { Card, Button } from "react-bootstrap";
 import "./FeaturedProducts.css";
 import { useEffect, useState } from "react";
-import StarRatings from "react-star-ratings";
 import CARD from "../../components/Card/Card";
-
-const API = "https://fakestoreapi.com";
 
 const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
@@ -13,7 +9,6 @@ const FeaturedProducts = () => {
       .then((response) => response.json())
       .then((Resp) => {
         setProducts(Resp.products.slice(10, 14));
-        // console.log(Resp);
       });
   }, []);
   return (
@@ -25,16 +20,9 @@ const FeaturedProducts = () => {
         </div>
 
         <div className="featuredProducts showingProducts">
-          {products.length > 2 ? products.map((product) => {
-            return (
-              <>
-        
-
-                <CARD product={product}/>
-              </>
-
-            );
-          }) : "Error"}
+          {products.length > 2 ? products.map((product) => (
+            <CARD key={product.id} product={product} />
+          )) : "Error"}
         </div>
       </div>
     </>

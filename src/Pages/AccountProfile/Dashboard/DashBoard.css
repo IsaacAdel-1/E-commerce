@@ -79,19 +79,31 @@
     background-color: #f9fafb;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    height: 80px;
+    gap: 12px;
+    padding: 14px 16px;
+    min-height: 80px;
+    border-radius: 12px;
     cursor: pointer;
+    box-sizing: border-box;
 }
 .orderDetails div {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 14px;
+}
+/* The left side (icon + text) takes the free space and can shrink cleanly */
+.orderDetails > div:first-child {
+    flex: 1;
+    min-width: 0;
 }
 .orderDetails div .icon{
     font-size: 1.4rem;
-   
-    padding: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 .ViewOrders{
     background-color: #fff;
@@ -121,9 +133,12 @@
     align-items: center;
     justify-content: center;
     height: fit-content;
-    width: 15%;
-    padding: 0px 10px;
-    
+    width: auto;
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 5px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
     border-radius: 20px;
 }
 .WishList{
@@ -158,73 +173,60 @@
 }
 .orderDetails .Details p{
     height: fit-content;
-   font-size: 1.1rem;
-   font-weight: 500;
+   font-size: 1.05rem;
+   font-weight: 600;
+   color: #1a1a2e;
     width: 100%;
+}
+.orderDetails .Details p:first-child span{
+    color: #6b7280;
+    font-weight: 500;
 }
 .orderDetails .Details p:nth-child(2){
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #6b7280;
 }
-@media (max-width: 1000px) {
-    .dashboardContainer{
-        
-        padding: 0;
-    }
-    .dashboardContent{
-        display: flex;
-
-        justify-content: space-around;
-    }
-    .dashboard-cards{
-        flex-direction: column;
-        width: 30%;
-        
-    }
-    .OrdersAndWishlist{
-        flex-direction: column;
-        
-        padding: 0;
-        margin: 0;
-        align-items: end;
-    }
-  
-    .OrdersAndWishlist .RecentOrders{
-        width: 90%;
-        
-    }
-    .OrdersAndWishlist .WishList{
-        width: 90%;
-    }
-    
-    .dashboardCard{
-        padding: 5px 10px;
-        width: 100%;
-    }
+.orderDetails .Details p:nth-child(2) span{
+    white-space: nowrap;
 }
-@media (max-width : 900px){
-    .dashboardCard{
-        width: 60vw;
-        max-width: 320px;
+/* ---------------- Responsive ---------------- */
+@media (max-width: 1024px) {
+    .dashboardContainer { padding: 20px; }
+    /* Cards wrap instead of being squeezed to 30% each */
+    .dashboard-cards {
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
     }
-    .dashboardContainer{
-        padding: 10px;
+    .dashboardCard {
+        width: auto;
+        flex: 1 1 200px;
+        max-width: 360px;
+        padding: 16px 20px;
     }
-    .dashboardContent{
-        display: flex;
+    /* Recent orders and wishlist stack vertically */
+    .OrdersAndWishlist {
         flex-direction: column;
-        align-items: start;
         gap: 30px;
+        margin-top: 30px;
     }
-    .dashboard-cards{
-        flex-direction: column;
-        gap: 25px;
-        width: 100vw;
+    .RecentOrders,
+    .WishList { width: 100%; }
+}
+
+@media (max-width: 480px) {
+    .dashboardContainer { padding: 12px; }
+    .dashboardCard {
+        flex-basis: 100%;
+        max-width: 100%;
     }
-    .OrdersAndWishlist{
-        flex-direction: column;
-    }
-    .RecentOrders , .WishList{
-        width: 100%;
-    }
+    /* Let order rows grow taller and keep the status pill readable */
+    .orderDetails { height: auto; padding: 12px; gap: 10px; }
+    .orderDetails .status { width: auto; white-space: nowrap; }
+    .icon img { width: 48px; height: 48px; }
+    .orderDetails div { gap: 12px; }
 }

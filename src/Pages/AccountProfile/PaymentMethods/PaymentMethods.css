@@ -58,5 +58,19 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: -1;
     background-color: #3d81ef;
-    
+
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 480px) {
+    .show form {
+        width: 90%;
+        max-width: 400px;
+        height: auto;
+        min-height: 60vh;
+        padding: 30px 0;
+    }
+    .show label { width: 80%; }
+    .show input,
+    .show input[type="month"] { width: 85%; }
 }

@@ -7,7 +7,7 @@ import {
   Dumbbell, Sun, Tablet, User, Car, ShoppingBag, Gem, Palette
 } from 'lucide-react';
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { use, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import React from "react";
 const ShopByCateg = () => {
@@ -43,7 +43,6 @@ const ShopByCateg = () => {
     fetch("https://dummyjson.com/products/categories")
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setCategory(res.slice(0, 12));
       });
   }, []);

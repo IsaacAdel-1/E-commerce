@@ -41,3 +41,19 @@
 .EnterEmail button:hover{
     background-color: #4338ca;
 }
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 768px) {
+    .EnterEmail input { width: 50%; }
+}
+
+@media (max-width: 480px) {
+    .EnterEmail {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 0 16px;
+    }
+    .EnterEmail input { width: 100%; }
+    .EnterEmail button { width: 100%; }
+}

@@ -85,3 +85,16 @@
         bottom: -100vh;
     }
 }
+
+@media (max-width: 480px) {
+    .address-card {
+        width: 92%;
+        box-sizing: border-box;
+        padding: 16px;
+    }
+    /* Name and phone fields stack instead of squeezing into 45% each */
+    .fullName,
+    .phoneNumber {
+        width: 100%;
+    }
+}

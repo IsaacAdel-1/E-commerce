@@ -1,6 +1,6 @@
 
 import "./Navbar.css";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
@@ -14,23 +14,32 @@ const Navbar = ({ query }) => {
     const {user} = useContext(UserContext)
    
     const [search, setSearch] = useState("");
-    const {state} = useContext(CartContext); 
+    const [menuOpen, setMenuOpen] = useState(false);
+    const {state} = useContext(CartContext);
 
-    console.log(user);
     const handleSearch = (e) => {
         setSearch(e.target.value);
     };
-    
+
+    const closeMenu = () => setMenuOpen(false);
+
   useProductSearch(search , query)
     return (
         <>
             <div className="main-nav">
+                <button
+                    className="menuToggle"
+                    aria-label="Toggle menu"
+                    onClick={() => setMenuOpen((open) => !open)}
+                >
+                    {menuOpen ? <FaTimes /> : <FaBars />}
+                </button>
                 <div className="logo">
                     <Link to={'/'} className="LogoLink">
                         Modern<span>Shop</span>
                     </Link>
                 </div>
-                <ul className="nav-links">
+                <ul className={`nav-links ${menuOpen ? "open" : ""}`} onClick={closeMenu}>
                     <li>
                         <Link to="/">Home</Link>
                     </li>
@@ -55,8 +64,6 @@ const Navbar = ({ query }) => {
                             id=""
                             placeholder="Search products"
                             value={search}
-                            // value علشان لو اليوزر داس علي خيار معين مثلاً ممكن اخلي اللي مكتوب في الانبوت نفس اللي داس عليه من غير ما يكتب
-                            // onKeyDown={(event)=>handleKeyDown(event)}
                             onChange={(e) => {
                                 handleSearch(e);
                             }}
@@ -78,7 +85,6 @@ const Navbar = ({ query }) => {
                         <Link to={'/login'} className="LogninButton">Log In</Link>}
                             {user.name ? <img src={`${IMAGES_URL}/${user.image}`} alt="Profile" className="userImage" onClick={()=>{navigate('/profile')}} onError={(e) => e.target.src = 'default-avatar.png'}/> :
                         <Link className="signUPButton" to={'/signup'}>Sign Up</Link>}
-                        {user.name ? "" :""}
                     </div>
                 </div>
             </div>

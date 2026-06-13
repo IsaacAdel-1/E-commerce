@@ -5,11 +5,6 @@ import { useEffect, useState } from "react";
 import getDataFromAPI from '../../Services/api'
 import formatCategoriesForAPI from "../../Utilities/FormatCategoriesForAPI";
 import ScrollWindow from '../../Utilities/ScrollY'
-const API = "https://fakestoreapi.com/products/categories";
-const dummyAPI = "https://dummyjson.com/products";
-const DummyAPIsWebsite = "https://dummyjson.com/docs/products"
-
-
 import CARD from "../../components/Card/Card";
 
 
@@ -18,6 +13,9 @@ const Shop = ({query}) => {
   const [productsComing, setProducts] = useState([]);
 
   const [NoProducts , setNoProducts] = useState(productsComing.length);
+
+  // On mobile the filters are collapsed behind a toggle so products show first
+  const [showFilters, setShowFilters] = useState(false);
 
   const [filters, setFilters] = useState({
     beauty: false,
@@ -115,7 +113,13 @@ const Shop = ({query}) => {
           <h2>Shopping</h2>
         </div>
         <div className="shopBody">
-          <div className="filters">
+          <button
+            className="filtersToggle"
+            onClick={() => setShowFilters((open) => !open)}
+          >
+            {showFilters ? "✕  Hide Filters" : "☰  Show Filters"}
+          </button>
+          <div className={`filters ${showFilters ? "open" : ""}`}>
             <div className="filterTitle">Filters</div>
 
 
@@ -253,7 +257,8 @@ const Shop = ({query}) => {
             </div>
 
 
-            <button className="ApplyFilter" onClick={() => { handleFilter(); console.log("Clicked") }}>Apply Filter</button>
+            {/* Filters apply automatically via the useEffect above when a checkbox changes */}
+            <button className="ApplyFilter" onClick={ScrollWindow}>Apply Filter</button>
           </div>
 
           {/* <div className="featuredProducts showingProducts "> */}
@@ -261,7 +266,7 @@ const Shop = ({query}) => {
             {productsComing.length > 2 ? productsComing.slice(initial , end).map((product) => { 
               
 
-            return (<CARD product = {product} />)
+            return (<CARD key={product.id} product={product} />)
           })
              : ""}
           </div>
