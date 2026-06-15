@@ -31,7 +31,7 @@ function App() {
       </UserProvider>
       
     </BrowserRouter> }
-  
+      <Analytics />
       </>
   )
 }
