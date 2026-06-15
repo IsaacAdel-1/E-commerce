@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import Navbar from './components/Navbar/Navbar'
-
+import { Analytics } from "@vercel/analytics/react";
 import {BrowserRouter  } from 'react-router-dom'
 import Footer from './components/Footer/Footer'
 import Router from './Router'
@@ -29,9 +29,9 @@ function App() {
         <Footer/>
       </CartProvider>  
       </UserProvider>
-      
-    </BrowserRouter> }
       <Analytics />
+    </BrowserRouter> }
+      
       </>
   )
 }
